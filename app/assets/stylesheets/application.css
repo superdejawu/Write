@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+.brand-lg {
+	padding: 20px 20px 20px 20px;
+}

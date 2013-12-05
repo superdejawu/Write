@@ -27,8 +27,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-# MY inclusion
+# MY inclusions
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
+gem "devise", "~> 3.2.2"
 
 group :development, :test do
 	#what placing it in a group does is that it says you only needa use sqlite gem in development not in production, 

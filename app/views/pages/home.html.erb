@@ -1,4 +1,17 @@
-<h1>Welcome to my Page</h1>
-<div class="jumbotron">
-<p>Sign up <%= link_to "Sign Up", "http://www.google.com", class: "btn btn-primary btn-large " %>.</p>
+<div class="jumbotron text-center">
+	
+
+	
+	<% if user_signed_in? %>
+		<h1> Welcome! </h1>
+			#do something
+		<% else %>
+		<%= image_tag "vitamins logo (salmon).png", :class=>"img-responsive brand-lg" %>
+		<p><p>
+		The best place to share the music and art that you love.
+		<p>
+		<%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-lg" %>
+		 <%= link_to "Let's Start!", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+	 <% end %>
+
 </div>
