@@ -21,24 +21,22 @@ class VitaminsController < ApplicationController
   def create
     @vitamin = Vitamin.new(vitamin_params)
 
-    respond_to do |format|
       if @vitamin.save
         redirect_to @vitamin, notice: 'Vitamin was successfully created.' 
       else
         render action: 'new' 
       end
-    end
+    
   end
 
 
   def update
-    respond_to do |format|
       if @vitamin.update(vitamin_params)
         redirect_to @vitamin, notice: 'Vitamin was successfully updated.' 
       else
         render action: 'edit'
       end
-    end
+    
   end
 
  
