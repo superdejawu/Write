@@ -23,11 +23,9 @@ class VitaminsController < ApplicationController
 
     respond_to do |format|
       if @vitamin.save
-        format.html { redirect_to @vitamin, notice: 'Vitamin was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vitamin }
+        redirect_to @vitamin, notice: 'Vitamin was successfully created.' 
       else
-        format.html { render action: 'new' }
-        format.json { render json: @vitamin.errors, status: :unprocessable_entity }
+        render action: 'new' 
       end
     end
   end
@@ -36,11 +34,9 @@ class VitaminsController < ApplicationController
   def update
     respond_to do |format|
       if @vitamin.update(vitamin_params)
-        format.html { redirect_to @vitamin, notice: 'Vitamin was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @vitamin, notice: 'Vitamin was successfully updated.' 
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @vitamin.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
     end
   end
@@ -49,8 +45,7 @@ class VitaminsController < ApplicationController
   def destroy
     @vitamin.destroy
     respond_to do |format|
-      format.html { redirect_to vitamins_url }
-      format.json { head :no_content }
+      redirect_to vitamins_url 
     end
   end
 
