@@ -1,0 +1,27 @@
+<h1>Listing vitamins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vitamins.each do |vitamin| %>
+      <tr>
+        <td><%= vitamin.description %></td>
+        <td><%= link_to 'Show', vitamin %></td>
+        <td><%= link_to 'Edit', edit_vitamin_path(vitamin) %></td>
+        <td><%= link_to 'Destroy', vitamin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vitamin', new_vitamin_path %>
