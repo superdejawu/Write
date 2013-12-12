@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Description</th>
+      <th>Email</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,9 +15,12 @@
     <% @vitamins.each do |vitamin| %>
       <tr>
         <td><%= vitamin.description %></td>
+        <td><%= vitamin.user.email if vitamin.user %></td>
         <td><%= link_to 'Show', vitamin %></td>
-        <td><%= link_to 'Edit', edit_vitamin_path(vitamin) %></td>
-        <td><%= link_to 'Destroy', vitamin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if vitamin.user == current_user %>
+          <td><%= link_to 'Edit', edit_vitamin_path(vitamin) %></td>
+          <td><%= link_to 'Destroy', vitamin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

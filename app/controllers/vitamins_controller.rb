@@ -1,6 +1,7 @@
 class VitaminsController < ApplicationController
   before_action :set_vitamin, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @vitamins = Vitamin.all
   end
@@ -11,7 +12,7 @@ class VitaminsController < ApplicationController
 
 
   def new
-    @vitamin = Vitamin.new
+    @vitamin = current_user.vitamins.build
   end
 
   def edit
@@ -19,7 +20,7 @@ class VitaminsController < ApplicationController
 
 
   def create
-    @vitamin = Vitamin.new(vitamin_params)
+    @vitamin = current_user.vitamins.build(vitamin_params)
 
       if @vitamin.save
         redirect_to @vitamin, notice: 'Vitamin was successfully created.' 
@@ -51,6 +52,11 @@ class VitaminsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_vitamin
       @vitamin = Vitamin.find(params[:id])
+    end
+
+    def correct_user
+      @vitamin = current_user.vitamins.find_by(id: params[:id])
+      redirect_to vitamins_path, notice: "Not authorized to edit this vitamin" if @vitamin.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

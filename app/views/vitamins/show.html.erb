@@ -5,5 +5,7 @@
   <%= @vitamin.description %>
 </p>
 
-<%= link_to 'Edit', edit_vitamin_path(@vitamin) %> |
+<% if @vitamin.user == current_user %>
+	<%= link_to 'Edit', edit_vitamin_path(@vitamin) %> |
+<% end %>
 <%= link_to 'Back', vitamins_path %>
