@@ -44,7 +44,7 @@ class VitaminsController < ApplicationController
   def destroy
     @vitamin.destroy
     respond_to do |format|
-      redirect_to vitamins_url 
+      format.html {redirect_to vitamins_url }
     end
   end
 
@@ -61,6 +61,6 @@ class VitaminsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vitamin_params
-      params.require(:vitamin).permit(:description)
+      params.require(:vitamin).permit(:description, :image)
     end
 end

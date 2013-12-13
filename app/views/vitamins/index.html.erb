@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Description</th>
       <th>Email</th>
       <th></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @vitamins.each do |vitamin| %>
       <tr>
+        <td><%= image_tag vitamin.image.url(:medium)%></td>  
         <td><%= vitamin.description %></td>
         <td><%= vitamin.user.email if vitamin.user %></td>
         <td><%= link_to 'Show', vitamin %></td>

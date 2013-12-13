@@ -29,7 +29,10 @@ gem 'jbuilder', '~> 1.2'
 
 # MY inclusions
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
+
 gem "devise", "~> 3.2.2"
+
+gem "paperclip", '~> 3.0'
 
 group :development, :test do
 	#what placing it in a group does is that it says you only needa use sqlite gem in development not in production, 
