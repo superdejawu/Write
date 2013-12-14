@@ -1,33 +1,16 @@
-<h1>Listing vitamins</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Description</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vitamins.each do |vitamin| %>
-      <tr>
-        <td><%= image_tag vitamin.image.url(:medium)%></td>  
-        <td><%= vitamin.description %></td>
-        <td><%= vitamin.user.email if vitamin.user %></td>
-        <td><%= link_to 'Show', vitamin %></td>
-        <% if vitamin.user == current_user %>
-          <td><%= link_to 'Edit', edit_vitamin_path(vitamin) %></td>
-          <td><%= link_to 'Destroy', vitamin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Vitamin', new_vitamin_path %>
+<div id="vitamins" class='transitions-enabled'>
+  <% @vitamins.each do |vitamin| %>
+    <div class="box panel panel-default">
+        <%= image_tag vitamin.image.url(:medium)%> 
+          <div class='panel-body'>
+          <%= vitamin.description %>
+          <%= vitamin.user.email if vitamin.user %>
+          <%= link_to 'Show', vitamin %>
+          <% if vitamin.user == current_user %>
+              <%= link_to 'Edit', edit_vitamin_path(vitamin) %>
+              <%= link_to 'Destroy', vitamin, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      </div>  
+    </div>
+  <% end %>
+</div>
