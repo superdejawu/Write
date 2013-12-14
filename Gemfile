@@ -40,6 +40,9 @@ gem "aws-sdk", '1.30.0'
 
 gem 'masonry-rails', '~> 0.2.1'
 
+gem 'will_paginate', '~>3.0'
+
+gem 'will_paginate-bootstrap', '~>1.0'
 
 group :development, :test do
 	#what placing it in a group does is that it says you only needa use sqlite gem in development not in production, 
