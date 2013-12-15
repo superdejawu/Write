@@ -11,7 +11,7 @@
 				<p>
 				  <%= @vitamin.description %>
 				</p>
-				 <p><strong><%= @vitamin.user.email if @vitamin.user %> </strong></p>
+				 <p><strong><%= @vitamin.user.name if @vitamin.user %> </strong></p>
 
 				<% if @vitamin.user == current_user %>
 					 <%= link_to edit_vitamin_path(@vitamin) do %>

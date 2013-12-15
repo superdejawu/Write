@@ -7,7 +7,7 @@
         <%= link_to image_tag(vitamin.image.url(:medium)), vitamin%> 
           <div class='panel-body'>
             <%= vitamin.description %> </br>
-            <strong><%= vitamin.user.email if vitamin.user %> </strong>
+            <strong><%= vitamin.user.name if vitamin.user %> </strong>
             <% if vitamin.user == current_user %>
               <div class = "actions">
                 <%= link_to edit_vitamin_path(vitamin) do %>
