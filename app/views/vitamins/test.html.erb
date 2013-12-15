@@ -1,0 +1,28 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
+
+<div id="vitamins" class='transitions-enabled'>
+  <% @vitamins.each do |vitamin| %>
+    <div class="box panel panel-default">
+        <%= link_to image_tag(vitamin.image.url(:medium)), vitamin%> 
+          <div class='panel-body'>
+            <%= vitamin.description %> </br>
+            <strong><%= vitamin.user.name if vitamin.user %> </strong>
+            <% if vitamin.user == current_user %>
+              <div class = "actions">
+                <%= link_to edit_vitamin_path(vitamin) do %>
+                  <span class = "glyphicon glyphicon-edit"> </span>
+                <% end %>
+                <%= link_to vitamin, method: :delete, data: { confirm: 'Are you sure?' } do%>
+                  <span class = "glyphicon glyphicon-trash"> </span>
+                <% end %>
+            </div>
+          <% end %>
+      </div>  
+    </div>
+  <% end %>
+</div>
+
+<div class= "text-center">
+<%= will_paginate @vitamins, renderer: BootstrapPagination::Rails %>
+</div>
