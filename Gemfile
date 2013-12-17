@@ -30,7 +30,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # MY inclusions
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '2.1-stable'
 
 gem "devise", "~> 3.2.2"
 
