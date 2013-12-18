@@ -22,6 +22,9 @@
  *= require_tree .
  */
 
+.courier {font-family: Courier;
+			font-size: 48px}
+
 .brand-lg {
 	padding: 20px 20px 20px 20px;
 }
@@ -33,15 +36,17 @@
 }
 
 #hero {
-  background: url("paisaje_azul.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
+  background-image: url("texture.png"), url("paisaje_azul.jpg");
+  background-repeat: repeat;
+  background-color: white;
+  background-attachment:fixed;
+	/*  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-	background-image: url("paisaje_azul.jpg");
-	min-width:100%;
-	min-height: 480px;
-}
+  background-size: cover;*/
+/*	background-image: url("paisaje_azul.jpg");
+*/	min-width:100%;
+	min-height: 480px;}
 
 .write-form {
 	text-align: center;
@@ -50,13 +55,14 @@
 	resize: none;
 	background: none;
 	outline: none;
-	font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Courier, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	font-size: 32px;
+	font-size: 64px;
 	line-height: 35px;
 	padding: 3px;
 	border: none;
 	margin: auto;
+	width: 900px;
 }

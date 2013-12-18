@@ -11,8 +11,17 @@ $font-family-sans-serif: 'Cabin';
 
 .navbar {
   	background: rgb(255,255,255);
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0);
+   background:none;
+    border: none;
+    height: 75px;
+    padding: 13px;
   
 }
 
-// body { padding-top: 50px; }
+.navbar #opaque-bar {
+	    background: rgba(255,255,255,1);
+
+}
+
+ // body { padding-top: 50px; }

@@ -1,10 +1,17 @@
 <div class="jumbotron text-center" id="hero">
 			<p><br></br><br></br></p>
-			<h1> Describe yourself in 3 words: </h1>
+			<div class="courier"> Describe yourself in 3 words: </div>
 			<%#  <%= image_tag "vitamins logo (salmon).png", :class=>"img-responsive brand-lg" %>
  			<p><br></br></p>
-
-				<form><input type = "text" class="write-form"  autofocus></form>
+				<form><textarea class="write-form"  autofocus>Blablabla</textarea></form>
+				<div id="article"><form><input type="text"></form></div>
+				<script>
+		            new Medium({
+		                 element: document.getElementById('article'),
+    					mode: 'rich',
+    						placeholder: 'Your Article'
+		            });
+		        </script>
 
 			<p><br></br></p>
 			<!-- <p>
