@@ -25,6 +25,13 @@
 .courier {font-family: Courier;
 			font-size: 48px}
 
+.playfair { font-family: "Playfair";
+			color: gray;
+			font-size: 40px}
+.sanchez { font-family: "Sanchez";
+			color: #B0B0B0;
+			font-size: 32px}
+
 .brand-lg {
 	padding: 20px 20px 20px 20px;
 }
@@ -36,10 +43,11 @@
 }
 
 #hero {
-  background-image: url("texture.png"), url("paisaje_azul.jpg");
+  background-image: url("texture.png")/*, url("paisaje_azul.jpg")*/;
   background-repeat: repeat;
-  background-color: white;
+  background-color: #FAF9F5;
   background-attachment:fixed;
+  box-shadow: 10px 0px 25px gray;
 	/*  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -50,8 +58,9 @@
 
 .write-form {
 	text-align: center;
+	border-bottom:3px solid #ffffff;
 	display: block;
-	color: #589f98;
+	color: #333333;
 	resize: none;
 	background: none;
 	outline: none;
@@ -66,3 +75,63 @@
 	margin: auto;
 	width: 900px;
 }
+
+textarea {
+	height: 200px;
+}
+
+
+/* Shadow Stuff */
+.box h3{
+	text-align:center;
+	position:relative;
+	top:80px;
+}
+.box {
+	width:70%;
+	height:200px;
+	background:#FFF;
+	margin:40px auto;
+}
+
+.effect1{
+	-webkit-box-shadow: 0 10px 6px -6px #777;
+	   -moz-box-shadow: 0 10px 6px -6px #777;
+	        box-shadow: 0 10px 6px -6px #777;
+}
+
+.effect2
+{
+  position: relative;
+}
+.effect2:before, .effect2:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 5px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 5zpx #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.effect2:after
+{
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
