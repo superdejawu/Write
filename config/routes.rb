@@ -1,9 +1,9 @@
 Pinteresting::Application.routes.draw do
-  resources :vitamins
+  resources :posts
 
   devise_for :users
   #get "pages/home" < originall put here
-  root "vitamins#index"
+  root "posts#index"
   get "about" => "pages#about"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -22,6 +22,8 @@
  *= require_tree .
  */
 
+ h3 { }
+
 .courier {font-family: Courier;
 			font-size: 48px}
 
@@ -30,7 +32,8 @@
 			font-size: 40px}
 .sanchez { font-family: "Sanchez";
 			color: #B0B0B0;
-			font-size: 32px}
+			font-size: 32px;
+			margin-top:200px;}
 
 .brand-lg {
 	padding: 20px 20px 20px 20px;
@@ -54,14 +57,14 @@
   background-size: cover;*/
 /*	background-image: url("paisaje_azul.jpg");
 */	min-width:100%;
-	min-height: 480px;}
+	min-height: 540px;}
 
 .write-form {
 	text-align: center;
 	border-bottom:3px solid #ffffff;
 	display: block;
 	color: #333333;
-	resize: none;
+	resize: vertical;
 	background: none;
 	outline: none;
 	font-family: Courier, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -69,11 +72,13 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	font-size: 64px;
-	line-height: 35px;
+	line-height: 1.0;
 	padding: 3px;
 	border: none;
 	margin: auto;
-	width: 900px;
+	min-width: 900px;
+	min-height: 270px;
+
 }
 
 textarea {
@@ -81,57 +86,4 @@ textarea {
 }
 
 
-/* Shadow Stuff */
-.box h3{
-	text-align:center;
-	position:relative;
-	top:80px;
-}
-.box {
-	width:70%;
-	height:200px;
-	background:#FFF;
-	margin:40px auto;
-}
-
-.effect1{
-	-webkit-box-shadow: 0 10px 6px -6px #777;
-	   -moz-box-shadow: 0 10px 6px -6px #777;
-	        box-shadow: 0 10px 6px -6px #777;
-}
-
-.effect2
-{
-  position: relative;
-}
-.effect2:before, .effect2:after
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 5px;
-  left: 10px;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #777;
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 5zpx #777;
-  -webkit-transform: rotate(-3deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-3deg);
-  -ms-transform: rotate(-3deg);
-  transform: rotate(-3deg);
-}
-.effect2:after
-{
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
-  -ms-transform: rotate(3deg);
-  transform: rotate(3deg);
-  right: 10px;
-  left: auto;
-}
 
