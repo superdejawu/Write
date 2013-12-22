@@ -61,10 +61,13 @@
 
 .write-form {
 	text-align: center;
-	border-bottom:3px solid #ffffff;
-	display: block;
+border-width: 0 0 1px 0;
+border-style: solid;
+border-color: #dcdcdc;	display: block;
 	color: #333333;
 	resize: vertical;
+	width: 100%;
+	max-width: 800px;
 	background: none;
 	outline: none;
 	font-family: Courier, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -74,16 +77,14 @@
 	font-size: 64px;
 	line-height: 1.0;
 	padding: 3px;
-	border: none;
-	margin: auto;
-	min-width: 900px;
-	min-height: 270px;
-
+/*	border: none;
+*/	margin: auto;
+/*	min-width: 900px;
+*//*	min-height: 30px;
+*/
 }
 
-textarea {
-	height: 200px;
-}
+
 
 
 

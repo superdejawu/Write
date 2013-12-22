@@ -8,4 +8,5 @@ class Post < ActiveRecord::Base
 	validates :writing, presence: true
 
 	# validates :image, presence: true
+
 end

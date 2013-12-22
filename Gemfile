@@ -44,6 +44,8 @@ gem 'will_paginate', '~>3.0'
 
 gem 'will_paginate-bootstrap', '~>1.0'
 
+gem 'acts-as-taggable-on', '~>2.4.1'
+
 group :development, :test do
 	#what placing it in a group does is that it says you only needa use sqlite gem in development not in production, 
 	gem 'sqlite3'
