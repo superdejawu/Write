@@ -15,6 +15,13 @@
 				<p>
 				  <%= @post.writing %>
 				</p>
+
+				<p>
+					<% @post.tags.any? %>
+					 <% @post.tags.each do |tag| %>
+					 <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+					<% end %>
+				</p>
 				 <p><strong><%= @post.user.name if @post.user %> </strong></p>
 
 				<% if @post.user == current_user %>

@@ -61,6 +61,17 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:description, :image, :writing)
+      params.require(:post).permit(:description, :image, :writing, :tag_list)
     end
+
+  def tagged
+    if params[:tag].present? 
+      @posts = Post.tagged_with(params[:tag])
+    else 
+      @posts = Post.all
+  end  
+
+
+
+end
 end

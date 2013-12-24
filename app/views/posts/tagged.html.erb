@@ -1,0 +1,36 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
+
+    <div id="posts" class="transitions-enabled">
+      <% @posts.each do |post| %>
+        <div class="box panel panel-default">
+          <%= link_to image_tag(post.image.url(:medium)), post %>
+          <div class="panel-body">
+            <p><%= post.description %></p>
+            <p><strong><%= post.user.name if post.user %></strong></p>
+                          
+
+            
+            <% if post.user == current_user %>
+              <div class="actions">
+                <%= link_to edit_post_path(post) do %>
+                  <span class="glyphicon glyphicon-edit"></span>
+                  Edit
+                <% end %>
+                <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+                  Delete
+                <% end %>
+              </div>
+            <% end %>
+            
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+
+  <div class= "text-center">
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

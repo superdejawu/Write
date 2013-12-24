@@ -1,10 +1,15 @@
 Pinteresting::Application.routes.draw do
-  resources :posts
 
+  resources :posts
   devise_for :users
   #get "pages/home" < originall put here
   root "posts#index"
   get "about" => "pages#about"
+
+  # resources :posts only: [:create, :destroy, :tag]
+
+  match 'tagged' => 'posts#tagged', :as => 'tagged', via: 'get'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
