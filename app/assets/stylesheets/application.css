@@ -46,8 +46,8 @@
 }
 
 #hero {
-  background-image: url("texture.png")/*, url("paisaje_azul.jpg")*/;
-  background-repeat: repeat;
+/*  background-image: url("texture.png")/*, url("paisaje_azul.jpg")*/;
+*/  background-repeat: repeat;
   background-color: #FAF9F5;
   background-attachment:fixed;
   box-shadow: 10px 0px 25px gray;

@@ -1,6 +1,7 @@
 Pinteresting::Application.routes.draw do
 
   resources :posts
+    # , only: [:create, :destroy, :tag]
   devise_for :users
   #get "pages/home" < originall put here
   root "posts#index"

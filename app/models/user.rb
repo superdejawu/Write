@@ -8,7 +8,4 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  acts_as_taggable
-  acts_as_taggable_on :skills, :interests
-
 end

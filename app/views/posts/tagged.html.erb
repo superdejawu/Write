@@ -9,8 +9,6 @@
             <p><%= post.description %></p>
             <p><strong><%= post.user.name if post.user %></strong></p>
                           
-
-            
             <% if post.user == current_user %>
               <div class="actions">
                 <%= link_to edit_post_path(post) do %>
@@ -31,6 +29,5 @@
 
 
   <div class= "text-center">
-  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-  </div>
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %></div>
 </div>

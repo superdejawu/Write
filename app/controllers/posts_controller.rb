@@ -48,6 +48,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def tagged
+    if params[:tag].present? 
+      @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 8)
+    else 
+      @posts = Post.post.all.order.paginate(:page => params[:page], :per_page => 8)
+    end  
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -61,17 +69,9 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:description, :image, :writing, :tag_list)
+      params.require(:post).permit(:description, :image, :writing, :tag_list, :tags)
     end
 
-  def tagged
-    if params[:tag].present? 
-      @posts = Post.tagged_with(params[:tag])
-    else 
-      @posts = Post.all
-  end  
+  
 
-
-
-end
 end
