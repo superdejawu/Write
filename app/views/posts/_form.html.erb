@@ -28,7 +28,7 @@
 
     <div class ="form-group">
       <%= f.label :tags %>
-      <%= f.text_field :tag_list %>
+      <%= f.text_field :tag_list, value: current_user.name, disabled: true %>
     </div>
 
     <div class="form-group">
