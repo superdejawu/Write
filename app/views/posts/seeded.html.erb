@@ -1,12 +1,12 @@
-<%= render 'pages/home' unless user_signed_in? %>
+<%# render 'pages/home' unless user_signed_in? %>
 
 
     <div id="posts" class="transitions-enabled">
       <% @posts.each do |post| %>
         <div class="box panel panel-default">
-          <%= link_to image_tag(post.image.url(:medium)), post %>
+          <%# link_to image_tag(post.image.url(:medium)), post %>
           <div class="panel-body">
-            <p><%= post.description %></p>
+            <p><%= post.writing %></p>
             <p><strong><%= post.user.name if post.user %></strong></p>
                           
             <% if post.user == current_user %>
@@ -26,6 +26,7 @@
         </div>
       <% end %>
     </div>
+
 
 
   <div class= "text-center">

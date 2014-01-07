@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :seeded]
   def index
     @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
@@ -12,8 +12,8 @@ class PostsController < ApplicationController
 
 
   def new
+
     @post = current_user.posts.build
-    
   end
 
   def edit
@@ -49,11 +49,11 @@ class PostsController < ApplicationController
     end
   end
 
-  def tagged
-    if params[:tag].present? 
-      @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 8)
+  def seeded
+    if params[:seed].present? 
+      @posts = Post.seeded_with(params[:seed]).paginate(:page => params[:page], :per_page => 8)
     else 
-      @posts = Post.post.all.order.paginate(:page => params[:page], :per_page => 8)
+      @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     end  
   end
 
@@ -70,7 +70,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:description, :image, :writing, :tag_list, :tags)
+      params.require(:post).permit(:description, :image, :writing, :seed, :seed_id)
     end
 
   

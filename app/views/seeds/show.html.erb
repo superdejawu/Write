@@ -1,0 +1,49 @@
+<div class="jumbotron text-center" id="hero">
+
+		<p id="notice"><%= notice %></p>
+
+		<p>
+		  <div class="sanchez"><h3><%= @seed.prompt %></h3></div>
+		</p>
+
+
+		  <%= form_for @post, html: {multipart: true} do |f| %>
+		    <% if @post.errors.any? %>
+		      <div id="error_explanation">
+		        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+		        <ul>
+		        <% @post.errors.full_messages.each do |msg| %>
+		          <li><%= msg %></li>
+		        <% end %>
+		        </ul>
+		      </div>
+		    <% end %>
+
+
+
+		      <div class="form-group">
+		      <%= f.text_area :writing, value: "Type here.", class: "write-form" %>
+		    </div>
+
+
+		      <div class="form-group">
+		      <% f.label :seed_id %><br>
+		      <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
+		    </div>
+
+
+		    <div class="form-group">
+		      <%= f.submit class: "btn btn-primary" %>
+		    </div>
+
+
+		     
+		  <% end %>
+
+
+
+
+		<%= link_to 'Back', seeds_path %>
+
+</div>

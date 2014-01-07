@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221054304) do
+ActiveRecord::Schema.define(version: 20140106024856) do
 
   create_table "posts", force: true do |t|
     t.string   "description"
@@ -23,25 +23,16 @@ ActiveRecord::Schema.define(version: 20131221054304) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "writing"
+    t.integer  "seed_id"
   end
 
+  add_index "posts", ["seed_id"], name: "index_posts_on_seed_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
-  create_table "taggings", force: true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       limit: 128
+  create_table "seeds", force: true do |t|
+    t.string   "prompt"
     t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-
-  create_table "tags", force: true do |t|
-    t.string "name"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

@@ -1,11 +1,11 @@
 <%= link_to 'Back', posts_path %>
 
 
-<div class-"row">
+<div class="row">
 	<div class="col-md-offset-2 col-md-8">
 		<div class = "panel panel-default ">
 			<div class="panel-heading text-center">
-				<%= image_tag @post.image.url(:medium) %>
+				<%# image_tag @post.image.url(:medium) %>
 			</div>
 			<div class='panel-body'>
 				<p>
@@ -16,10 +16,9 @@
 				  <%= @post.writing %>
 				</p>
 
-				<p>
-					<% @post.tags.any? %>
-					 <% @post.tags.each do |tag| %>
-					 <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+					 <%# @post.seed.each do |seed| %>
+					<%= @post.seed do |seed| %>
+					 	<%= link_to seed.prompt %>
 					<% end %>
 				</p>
 				 <p><strong><%= @post.user.name if @post.user %> </strong></p>

@@ -1,15 +1,42 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :seed
+
+	# has_many :seedings
+	# has_many :seeds, through: :seedings
+	# accepts_nested_attributes_for :seeds
+	# accepts_nested_attributes_for :seedings
+
+
 
 	
-	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-	# validates :description, presence: true
+	def self.seeded_with(prompt)
+	  Seed.find_by_prompt!(prompt).posts
+	end
+	# #don't quite understand, learn eventually
+	
+	# # def self.tag_counts
+	# #   Seed.select("seeds.*, count(seedings.seed_id) as count").
+	# #     joins(:seedings).group("seedings.seed_id")
+	# # end
 
-	validates :writing, presence: true
+	# def seed_list
+	#   seeds.map(&:name).join(", ")
+	# end
 
-	# validates :image, presence: true
+	# def seed_list=(names)
+	#   self.seeds = names.split(",").map do |n|
+	#     Seed.where(name: n.strip).first_or_create!
+	#   end
+	# end
 
-	acts_as_taggable
-	acts_as_taggable_on :tags
+	# has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+	# # validates :description, presence: true
+
+	# validates :writing, presence: true
+
+	# # validates :image, presence: true
+
+
 
 end

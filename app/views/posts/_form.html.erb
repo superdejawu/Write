@@ -26,21 +26,36 @@
       <%= f.text_area :writing, class: "form-control" %>
     </div>
 
-    <div class ="form-group">
-      <%= f.label :tags %>
-      <%= f.text_field :tag_list, value: current_user.name, disabled: true %>
+    <%# f.text_field @post.seeds, value: seed, disabled: true %>
+    <%# f.text_field @seed.prompt%>
+
+    <%#f.fields_for :seeds do |e| %>
+      <%# e.label :prompt, "Prompt" %>
+      <%# e.text_field :prompt %>
+    <%# end %>
+
+      <div class="form-group">
+      <%= f.label :seed_id %><br>
+      <%= f.text_area :seed_id, class: "form-control" %>
     </div>
+
 
     <div class="form-group">
       <%= f.submit class: "btn btn-primary" %>
     </div>
 
 
-      <script>
-                new Medium({
-                     element: document.getElementById('article'),
-              mode: 'rich',
-                placeholder: 'Your Article'
-                });
-            </script>
+     
   <% end %>
+
+  <%# form_for @seed, html: {multipart: true} do |f| %>
+<!-- 
+    <div class ="form-group">
+      <%# f.label :seeds %>
+      <%# f.text_field :seed_list, value: @seed.prompt, disabled: true %>
+    </div>
+
+    <div class="form-group">
+      <%# f.submit class: "btn btn-primary" %>
+    </div> -->
+<%# end %>

@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h1>Listing seeds</h1>
+
+
+     Prompt
+
+      <% @seeds.each do |seed| %>
+          <h1> <%= link_to seed.prompt, seeded_url(:seed => seed.prompt) %></h1> 
+          <%= link_to 'New Post', seed %>
+          <%= link_to edit_seed_path(seed) do%>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to  seed, method: :delete, data: { confirm: 'Are you sure?' } do%>  
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+      <% end %>
+
+
+  <br></br>
+
+  <h1><%= link_to ' + New Seed', new_seed_path %></h1>
+
+</div>

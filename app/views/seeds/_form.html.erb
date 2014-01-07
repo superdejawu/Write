@@ -1,0 +1,28 @@
+<div class="text-center">
+
+    <%= form_for @seed, html: {multipart: true}  do |f| %>
+
+      <% if @seed.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@seed.errors.count, "error") %> prohibited this seed from being saved:</h2>
+
+          <ul>
+          <% @seed.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    
+        <%= f.label :prompt %><br>
+        <%= f.text_field :prompt , class: "sanchez"%>
+
+
+      
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary"%>
+      </div>
+    <% end %>
+
+</div>
