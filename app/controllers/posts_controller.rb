@@ -52,6 +52,7 @@ class PostsController < ApplicationController
   def seeded
     if params[:seed].present? 
       @posts = Post.seeded_with(params[:seed]).paginate(:page => params[:page], :per_page => 8)
+      @seed = Post.seed_prompt(params[:seed])
     else 
       @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     end  

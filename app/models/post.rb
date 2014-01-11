@@ -13,6 +13,11 @@ class Post < ActiveRecord::Base
 	def self.seeded_with(prompt)
 	  Seed.find_by_prompt!(prompt).posts
 	end
+
+	def self.seed_prompt(prompt)
+	  Seed.find_by_prompt!(prompt).prompt
+	end
+
 	# #don't quite understand, learn eventually
 	
 	# # def self.tag_counts

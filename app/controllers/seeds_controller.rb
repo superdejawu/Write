@@ -12,8 +12,12 @@ class SeedsController < ApplicationController
   # GET /seeds/1.json
   def show
     @post = current_user.posts.build
+    @posts = @seed.posts
   end
 
+  def test
+    @post = current_user.posts.build
+  end
   # GET /seeds/new
   def new
     @seed = Seed.new

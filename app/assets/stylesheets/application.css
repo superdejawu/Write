@@ -25,15 +25,14 @@
  h3 { }
 
 .courier {font-family: Courier;
-			font-size: 48px}
+			}
 
 .playfair { font-family: "Playfair";
 			color: gray;
 			font-size: 40px}
 .sanchez { font-family: "Sanchez";
 			color: #B0B0B0;
-			font-size: 32px;
-			margin-top:200px;}
+			font-size: 32px;}
 
 .brand-lg {
 	padding: 20px 20px 20px 20px;
@@ -46,7 +45,7 @@
 }
 
 #hero {
-/*  background-image: url("texture.png")/*, url("paisaje_azul.jpg")*/;
+/*  background-image: url("texture.png")/*, url("paisaje_azul.jpg")*/;312312311231231231231
 */  background-repeat: repeat;
   background-color: #FAF9F5;
   background-attachment:fixed;
@@ -57,10 +56,11 @@
   background-size: cover;*/
 /*	background-image: url("paisaje_azul.jpg");
 */	min-width:100%;
-	min-height: 640px;}
+	min-height: 640px;
+	margin-top: -50px}
 
 .write-form {
-	text-align: center;
+	
 border-width: 0 0 1px 0;
 border-style: solid;
 border-color: #dcdcdc;	display: block;
@@ -74,20 +74,17 @@ border-color: #dcdcdc;	display: block;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	font-size: 64px;
+	font-size: 28px;
 	line-height: 1.0;
-	padding: 3px;
-/*	border: none;
-*/	margin: auto;
-/*	min-width: 900px;
-*//*	min-height: 30px;
-*/
+	margin-top: 20px;
+
 }
 
 
 
-body {
+.body {
 	margin-top: 50px;
 }
 
+.alignright {float: right;}
 

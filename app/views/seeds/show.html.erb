@@ -1,9 +1,9 @@
-<div class="jumbotron text-center" id="hero">
+<div class="container">
 
 		<p id="notice"><%= notice %></p>
 
 		<p>
-		  <div class="sanchez"><h3><%= @seed.prompt %></h3></div>
+		  <h1><%= @seed.prompt %></h1>
 		</p>
 
 
@@ -22,9 +22,8 @@
 
 
 
-		      <div class="form-group">
 		      <%= f.text_area :writing, value: "Type here.", class: "write-form" %>
-		    </div>
+		
 
 
 		      <div class="form-group">
@@ -41,9 +40,26 @@
 		     
 		  <% end %>
 
+		  <br>
 
+	<div id="posts" class="transitions-enabled">
+        <% @posts.each do |post| %>
+            <%# link_to image_tag(post.image.url(:medium)), post %>
+              <p><h3 class="courier"><%= post.writing %></h3></p>
+              <strong><%= post.user.name if post.user %></strong>
+                            
+              <% if post.user == current_user %>
+                  <%= link_to edit_post_path(post) do %>
+                    Edit
+                  <% end %>
+                  <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+                    
+                  <% end %>
+           
+              <% end %>
+        <% end %>
+      </div>
 
-
-		<%= link_to 'Back', seeds_path %>
 
 </div>
