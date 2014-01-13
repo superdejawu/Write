@@ -22,8 +22,6 @@
  *= require_tree .
  */
 
- h3 { }
-
 .courier {font-family: Courier;
 			}
 
@@ -45,17 +43,10 @@
 }
 
 #hero {
-/*  background-image: url("texture.png")/*, url("paisaje_azul.jpg")*/;312312311231231231231
-*/  background-repeat: repeat;
   background-color: #FAF9F5;
   background-attachment:fixed;
   box-shadow: 10px 0px 25px gray;
-	/*  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
-/*	background-image: url("paisaje_azul.jpg");
-*/	min-width:100%;
+	min-width:100%;
 	min-height: 640px;
 	margin-top: -50px}
 
