@@ -2,10 +2,7 @@ class Post < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :seed
 
-	# has_many :seedings
-	# has_many :seeds, through: :seedings
-	# accepts_nested_attributes_for :seeds
-	# accepts_nested_attributes_for :seedings
+	acts_as_votable
 
 
 

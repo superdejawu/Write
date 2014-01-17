@@ -1,7 +1,13 @@
 Pinteresting::Application.routes.draw do
 
-  resources :posts, :seeds
-    # , only: [:create, :destroy, :tag]
+  resources :posts do
+    member do
+      get "like", to: "posts#upvote"
+      get "dislike", to: "posts#downvote"
+    end
+  end
+
+  resources :seeds
   devise_for :users
   #get "pages/home" < originall put here
   root "seeds#index"
