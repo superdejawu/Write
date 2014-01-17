@@ -13,6 +13,8 @@ class SeedsController < ApplicationController
   def show
     @post = current_user.posts.build
     @posts = @seed.posts
+
+    # @votecheck = current_user.voted_up_on?(:post)
   end
 
   def test

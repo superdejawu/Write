@@ -67,8 +67,8 @@ class PostsController < ApplicationController
 
   def downvote
     @post = Post.find(params[:id])
-    @post.downvote_from current_user
-    redirect_to seeded_path(@post.id)
+    @post.disliked_by current_user
+    redirect_to @post.seed
   end
 
 
