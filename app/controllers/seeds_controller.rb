@@ -21,9 +21,9 @@ class SeedsController < ApplicationController
   end
   # GET /seeds/new
   def new
-    @seed = current_user.seeds.build
+    # @seed = current_user.seeds.build
     # @post = @seed.posts.build
-    @post = current_user.posts.build
+    # @post = current_user.posts.build
   end
 
   # GET /seeds/1/edit
