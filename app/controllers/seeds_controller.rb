@@ -1,7 +1,7 @@
 class SeedsController < ApplicationController
   before_action :set_seed, only: [:show, :edit, :update, :destroy]
-  # before_action :correct_user, only: [:edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /seeds
   # GET /seeds.json
   def index
@@ -14,7 +14,6 @@ class SeedsController < ApplicationController
     @post = current_user.posts.build
     @posts = @seed.posts
 
-    # @votecheck = current_user.voted_up_on?(:post)
   end
 
   def test
@@ -22,7 +21,7 @@ class SeedsController < ApplicationController
   end
   # GET /seeds/new
   def new
-    @seed = Seed.new
+    @seed = current_user.seeds.build
     # @post = @seed.posts.build
     @post = current_user.posts.build
   end
@@ -34,7 +33,7 @@ class SeedsController < ApplicationController
   # POST /seeds
   # POST /seeds.json
   def create
-    @seed = Seed.new(seed_params)
+    @seed = current_user.seeds.build(seed_params)
 
     respond_to do |format|
       if @seed.save
@@ -78,8 +77,8 @@ class SeedsController < ApplicationController
     end
 
     def correct_user
-      @post = current_user.posts.find_by(id: params[:id])
-      redirect_to posts_path, notice: "Not authorized to edit this post" if @post.nil?
+      @seed = current_user.seeds.find_by(id: params[:id])
+      redirect_to seeds_path, notice: "Not authorized to edit this seed." if @seed.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

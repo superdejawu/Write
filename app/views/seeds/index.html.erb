@@ -10,7 +10,7 @@
           <h3> <%= link_to seed.prompt, seeded_url(:seed => seed.prompt) %></h3> 
 
 
-            <% if current_user %>
+            <% if seed.user == current_user %>
                 <%= link_to '+', seed %>
                 <%= link_to edit_seed_path(seed) do%>
                   <span class="glyphicon glyphicon-edit"></span>
