@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show, :seeded]
+  # before_action :correct_user, only: [:edit, :update, :destroy]
+  # before_action :authenticate_user!, except: [:index, :show, :seeded]
   def index
     @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
@@ -11,9 +11,13 @@ class PostsController < ApplicationController
   end
 
 
-  def new
+  def new 
+    if current_user
+      @post = current_user.posts.build
+    else
+      @post =guest_user.posts.build
+    end
 
-    @post = current_user.posts.build
   end
 
   def edit
@@ -21,7 +25,12 @@ class PostsController < ApplicationController
 
 
   def create
-    @post = current_user.posts.build(post_params)
+    if current_user
+      @post = current_user.posts.build(post_params)
+    else
+      @post = guest_user.posts.build(post_params)
+    end
+
 
       if @post.save
         redirect_to @post, notice: 'Post was successfully created.' 

@@ -6,19 +6,20 @@
 		  <h1><%= @seed.prompt %></h1>
 		</p>
 
+		<%# if user_signed_in? %>
+			  <%= form_for @post, html: {multipart: true} do |f| %>
+			    <% if @post.errors.any? %>
+			      <div id="error_explanation">
+			        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-		  <%= form_for @post, html: {multipart: true} do |f| %>
-		    <% if @post.errors.any? %>
-		      <div id="error_explanation">
-		        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-		        <ul>
-		        <% @post.errors.full_messages.each do |msg| %>
-		          <li><%= msg %></li>
-		        <% end %>
-		        </ul>
-		      </div>
-		    <% end %>
+			        <ul>
+			        <% @post.errors.full_messages.each do |msg| %>
+			          <li><%= msg %></li>
+			        <% end %>
+			        </ul>
+			      </div>
+			    <% end %>
+		<%# end %>
 
 
 
@@ -45,7 +46,7 @@
 	<div id="posts" class="transitions-enabled">
         <% @posts.each do |post| %>
             <%# link_to image_tag(post.image.url(:medium)), post %>
-              <p><h3 class="courier"><%= post.writing %></h3></p>
+              <p><h3 class="courier"><%= simple_format(post.writing) %></h3></p>
               <strong><%= post.user.name if post.user %></strong>
                             
               <% if post.user == current_user %>
@@ -59,12 +60,15 @@
            
               <% end %>
 
-            <% if current_user.voted_up_on?(post)==false %>
+            <% if user_signed_in? && current_user.voted_up_on?(post)==false %>
              	<%= link_to "Like", like_post_path(post, method: :put) %>
 				<%= post.likes.size %>
-            <% else %>
+            <% elsif user_signed_in?%>
              	<%= link_to "Dislike", dislike_post_path(post, method: :put) %>
 				<%= post.likes.size %>
+			<% else %>
+				<%= link_to "Like", new_user_registration_path %>
+			<%= post.likes.size %>
 			<% end %>
 
         <% end %>

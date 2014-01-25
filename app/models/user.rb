@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   acts_as_voter
+
+  
+	def move_to(user)
+	  tasks.update_all(user_id: user.id)
+	end
 end

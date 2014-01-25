@@ -13,7 +13,7 @@
 				</p>
 
 				<p>
-				  <%= @post.writing %>
+				  <%= simple_format(@post.writing) %>
 				</p>
 
 					 <%# @post.seed.each do |seed| %>
@@ -32,8 +32,16 @@
 		             <% end %>
 				<% end %>
 
-				<%= link_to "Like", like_post_path(@post, method: :put) %>
-				<%= @post.votes.size %>
+				<% if user_signed_in? && current_user.voted_up_on?(@post)==false %>
+	             	<%= link_to "Like", like_post_path(@post, method: :put) %>
+					<%= @post.likes.size %>
+	            <% elsif user_signed_in?%>
+	             	<%= link_to "Dislike", dislike_post_path(@post, method: :put) %>
+					<%= @post.likes.size %>
+				<% else %>
+					<%= link_to "Like", new_user_registration_path %>
+					<%= @post.likes.size %>
+				<% end %>
 			</div>
 		</div>
 	</div>

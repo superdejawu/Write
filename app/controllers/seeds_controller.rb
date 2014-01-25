@@ -11,7 +11,10 @@ class SeedsController < ApplicationController
   # GET /seeds/1
   # GET /seeds/1.json
   def show
-    @post = current_user.posts.build
+    # if user_signed_in?
+    #   @post = current_user.posts.build
+    # end
+    @post = Post.new
     @posts = @seed.posts
 
   end
