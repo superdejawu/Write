@@ -50,6 +50,8 @@ gem 'acts_as_votable', '~> 0.8.0'
 
 gem 'newrelic_rpm'
 
+gem 'simple_form', '~> 3.0'
+
 group :development, :test do
 	#what placing it in a group does is that it says you only needa use sqlite gem in development not in production, 
 	gem 'sqlite3'

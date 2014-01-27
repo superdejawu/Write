@@ -1,78 +1,130 @@
-<div class="container">
+<!doctype html>
+<html>
+	<body class="yin">
 
-		<p id="notice"><%= notice %></p>
+			
+			<div class="text-options">
+				<div class="options">
+					<span class="no-overflow">
+						<span class="lengthen ui-inputs">
+							<button class="url useicons">&#xe005;</button>
+							<input class="url-input" type="text" placeholder="Type or Paste URL here"/>
+							<button class="bold">b</button>
+							<button class="italic">i</button>
+							<button class="quote">&rdquo;</button>
+						</span>
+					</span>
+				</div>
+			</div>
 
-		<p>
-		  <h1><%= @seed.prompt %></h1>
-		</p>
+			<div class="ui">
 
-		<%# if user_signed_in? %>
-			  <%= form_for @post, html: {multipart: true} do |f| %>
-			    <% if @post.errors.any? %>
-			      <div id="error_explanation">
-			        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+				<div class="wrapper">
 
-			        <ul>
-			        <% @post.errors.full_messages.each do |msg| %>
-			          <li><%= msg %></li>
-			        <% end %>
-			        </ul>
-			      </div>
-			    <% end %>
-		<%# end %>
+					<div class="top editing">
+						<button class="fullscreen useicons" title="Toggle fullscreen">
+							&#xe000;
+						</button>
 
+						<button class="color-flip useicons" title="Invert colors">
+							&#xe002;
+						</button>
+					</div>
 
-
-		      <%= f.text_area :writing, value: "Type here.", class: "write-form" %>
-		
-
-
-		      <div class="form-group">
-		      <% f.label :seed_id %><br>
-		      <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
-		    </div>
-
-
-		    <div class="form-group">
-		      <%= f.submit class: "btn btn-primary" %>
-		    </div>
-
-
-		     
-		  <% end %>
-
-		  <br>
-
-	<div id="posts" class="transitions-enabled">
-        <% @posts.each do |post| %>
-            <%# link_to image_tag(post.image.url(:medium)), post %>
-              <p><h3 class="courier"><%= simple_format(post.writing) %></h3></p>
-              <strong><%= post.user.name if post.user %></strong>
-                            
-              <% if post.user == current_user %>
-                  <%= link_to edit_post_path(post) do %>
-                    Edit
-                  <% end %>
-                  <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <span class="glyphicon glyphicon-trash"></span>
-                    
-                  <% end %>
-           
-              <% end %>
-
-            <% if user_signed_in? && current_user.voted_up_on?(post)==false %>
-             	<%= link_to "Like", like_post_path(post, method: :put) %>
-				<%= post.likes.size %>
-            <% elsif user_signed_in?%>
-             	<%= link_to "Dislike", dislike_post_path(post, method: :put) %>
-				<%= post.likes.size %>
-			<% else %>
-				<%= link_to "Like", new_user_registration_path %>
-			<%= post.likes.size %>
-			<% end %>
-
-        <% end %>
-      </div>
+					<div class="bottom">
+						<button class="about">
+							?
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- <p id="notice"><%= notice %></p> -->
 
 
-</div>
+			<%# if user_signed_in? %>
+		<section>
+			<header contenteditable="false" class="header">
+				<%= @seed.prompt %>
+			</header>
+			
+			<article contenteditable="true" class="content" id="my-content">
+				Testing
+			</article>
+
+			<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>
+			    <%= f.error_notification %>
+
+			    <%= f.hidden_field :writing, id:"my-textarea", html_safe: true %>
+
+				<div class="form-group">
+					    <% f.label :seed_id %><br>
+					    <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
+			    	</div>
+
+
+				    <div class="form-group">
+				      	<%= f.button :submit %>
+				    </div>
+			     
+			 <% end %>
+
+
+			  <br>
+			<article>
+			<div id="posts" class="transitions-enabled">
+		        <% @posts.each do |post| %>
+		            <%# link_to image_tag(post.image.url(:medium)), post %>
+		              <p><h3 class="courier"><%= simple_format(post.writing) %></h3></p>
+		              <strong><%= post.user.name if post.user %></strong>
+		                            
+		              <% if post.user == current_user %>
+		                  <%= link_to edit_post_path(post) do %>
+		                    Edit
+		                  <% end %>
+		                  <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+		                    <span class="glyphicon glyphicon-trash"></span>
+		                    
+		                  <% end %>
+		           
+		              <% end %>
+
+		            <% if user_signed_in? && current_user.voted_up_on?(post)==false %>
+		             	<%= link_to "Like", like_post_path(post, method: :put) %>
+						<%= post.likes.size %>
+		            <% elsif user_signed_in?%>
+		             	<%= link_to "Dislike", dislike_post_path(post, method: :put) %>
+						<%= post.likes.size %>
+					<% else %>
+						<%= link_to "Like", new_user_registration_path %>
+					<%= post.likes.size %>
+					<% end %>
+
+		        <% end %>
+		      </div>
+
+		     </article>
+		</section>
+
+	<!-- JS -->
+			<script type="text/javascript">
+				// Load required scripts.	
+				head.js( 
+					"js/utils.js",
+					"js/ui.js",
+					"js/editor.js",
+		        	function(){
+		            	
+		            	// Initiate ZenPen
+		            	editor.init();
+		    			ui.init();
+		            }
+		        );
+
+				//pass contenteditable to hidden :writing field
+		       function getContent(){
+        		document.getElementById("my-textarea").value = document.getElementById("my-content").innerHTML;
+    }
+	        </script>
+
+	</body>
+</html>
