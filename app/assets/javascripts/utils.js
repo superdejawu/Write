@@ -2,13 +2,13 @@
 
 String.prototype.trim = function(){ return this.replace(/^\s+|\s+$/g, ''); };
 
-function supportsHtmlStorage() {
-	try {
-		return 'localStorage' in window && window['localStorage'] !== null;
-	} catch (e) {
-		return false;
-	}
-}
+// function supportsHtmlStorage() {
+// 	try {
+// 		return 'localStorage' in window && window['localStorage'] !== null;
+// 	} catch (e) {
+// 		return false;
+// 	}
+// }
 
 function get_text(el) {
     ret = " ";

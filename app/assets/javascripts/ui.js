@@ -32,35 +32,35 @@ var ui = (function() {
 		console.log( "Checkin under the hood eh? We've probably got a lot in common. You should totally check out ZenPen on github! (https://github.com/tholman/zenpen)." );
 	}
 
-	function loadState() {
+	// function loadState() {
 
-		// Activate word counter
-		if ( localStorage['wordCount'] && localStorage['wordCount'] !== "0") {			
-			wordCountValue = parseInt(localStorage['wordCount']);
-			wordCountElement.value = localStorage['wordCount'];
-			wordCounter.className = "word-counter active";
-			updateWordCount();
-		}
+	// 	// Activate word counter
+	// 	if ( localStorage['wordCount'] && localStorage['wordCount'] !== "0") {			
+	// 		wordCountValue = parseInt(localStorage['wordCount']);
+	// 		wordCountElement.value = localStorage['wordCount'];
+	// 		wordCounter.className = "word-counter active";
+	// 		updateWordCount();
+	// 	}
 
-		// Activate color switch
-		if ( localStorage['darkLayout'] === 'true' ) {
-			if ( darkLayout === false ) {
-				document.body.className = 'yang';
-			} else {
-				document.body.className = 'yin';
-			}
-			darkLayout = !darkLayout;
-		}
+	// 	// Activate color switch
+	// 	if ( localStorage['darkLayout'] === 'true' ) {
+	// 		if ( darkLayout === false ) {
+	// 			document.body.className = 'yang';
+	// 		} else {
+	// 			document.body.className = 'yin';
+	// 		}
+	// 		darkLayout = !darkLayout;
+	// 	}
 
-	}
+	// }
 
-	function saveState() {
+	// function saveState() {
 
-		if ( supportsHtmlStorage() ) {
-			localStorage[ 'darkLayout' ] = darkLayout;
-			localStorage[ 'wordCount' ] = wordCountElement.value;
-		}
-	}
+	// 	if ( supportsHtmlStorage() ) {
+	// 		localStorage[ 'darkLayout' ] = darkLayout;
+	// 		localStorage[ 'wordCount' ] = wordCountElement.value;
+	// 	}
+	// }
 
 	function bindElements() {
 

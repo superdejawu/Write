@@ -47,8 +47,8 @@
 				<%= @seed.prompt %>
 			</header>
 			
-			<article contenteditable="true" class="content" id="my-content">
-				Testing
+			<article placeholder= "Type here." contenteditable="true" class="content" id="my-content" >
+				
 			</article>
 
 			<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>

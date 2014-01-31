@@ -15,31 +15,31 @@ var editor = (function() {
 		// Set cursor position
 		var range = document.createRange();
 		var selection = window.getSelection();
-		range.setStart(headerField, 1);
+		range.setStart(contentField, 1);
 		selection.removeAllRanges();
 		selection.addRange(range);
 
 		createEventBindings();
 
 		// Load state if storage is supported
-		if ( supportsHtmlStorage() ) {
-			loadState();
-		}
+		// if ( supportsHtmlStorage() ) {
+		// 	loadState();
+		// }
 	}
 
 	function createEventBindings( on ) {
 
 		// Key up bindings
-		if ( supportsHtmlStorage() ) {
+		// if ( supportsHtmlStorage() ) {
 
-			document.onkeyup = function( event ) {
-				checkTextHighlighting( event );
-				saveState();
-			}
+		// 	document.onkeyup = function( event ) {
+		// 		checkTextHighlighting( event );
+		// 		saveState();
+		// 	}
 
-		} else {
-			document.onkeyup = checkTextHighlighting;
-		}
+		// } else {
+		// 	document.onkeyup = checkTextHighlighting;
+		// }
 
 		// Mouse bindings
 		document.onmousedown = checkTextHighlighting;
@@ -213,22 +213,22 @@ var editor = (function() {
 		return !!nodeList[ name ];
 	}
 
-	function saveState( event ) {
+	// function saveState( event ) {
 		
-		localStorage[ 'header' ] = headerField.innerHTML;
-		localStorage[ 'content' ] = contentField.innerHTML;
-	}
+	// 	localStorage[ 'header' ] = headerField.innerHTML;
+	// 	localStorage[ 'content' ] = contentField.innerHTML;
+	// }
 
-	function loadState() {
+	// function loadState() {
 
-		if ( localStorage[ 'header' ] ) {
-			headerField.innerHTML = localStorage[ 'header' ];
-		}
+	// 	if ( localStorage[ 'header' ] ) {
+	// 		headerField.innerHTML = localStorage[ 'header' ];
+	// 	}
 
-		if ( localStorage[ 'content' ] ) {
-			contentField.innerHTML = localStorage[ 'content' ];
-		}
-	}
+	// 	if ( localStorage[ 'content' ] ) {
+	// 		contentField.innerHTML = localStorage[ 'content' ];
+	// 	}
+	// }
 
 	function onBoldClick() {
 		document.execCommand( 'bold', false );
@@ -339,7 +339,7 @@ var editor = (function() {
 
 	return {
 		init: init,
-		saveState: saveState,
+		// saveState: saveState,
 		getWordCount: getWordCount
 	}
 

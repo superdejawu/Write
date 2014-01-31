@@ -16,6 +16,13 @@
 	box-sizing: border-box;
 }
 
+
+
+.content[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #BFBFBF; 
+}
+
 *:focus {
 	outline: none;
 }
