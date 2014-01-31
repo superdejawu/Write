@@ -43,14 +43,14 @@ var ui = (function() {
 	// 	}
 
 	// 	// Activate color switch
-	// 	if ( localStorage['darkLayout'] === 'true' ) {
-	// 		if ( darkLayout === false ) {
-	// 			document.body.className = 'yang';
-	// 		} else {
-	// 			document.body.className = 'yin';
-	// 		}
-	// 		darkLayout = !darkLayout;
-	// 	}
+		if ( localStorage['darkLayout'] === 'true' ) {
+			if ( darkLayout === false ) {
+				document.body.className = 'yang';
+			} else {
+				document.body.className = 'yin';
+			}
+			darkLayout = !darkLayout;
+		}
 
 	// }
 

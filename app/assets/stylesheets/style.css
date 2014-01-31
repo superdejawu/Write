@@ -105,11 +105,13 @@ blockquote {
 .yin {
 	background: #fdfdfd;
 	color: #111;
+	margin-top: 50px
 }
 
 .yang {
 	background-color: #111;
 	color: #fafafa;
+	margin-top: 50px
 }
 
 .ui {
