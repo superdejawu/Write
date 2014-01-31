@@ -15,7 +15,7 @@ var editor = (function() {
 		// Set cursor position
 		var range = document.createRange();
 		var selection = window.getSelection();
-		range.setStart(contentField, 1);
+		range.setStart(contentField, 0);
 		selection.removeAllRanges();
 		selection.addRange(range);
 
