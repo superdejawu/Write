@@ -42,37 +42,41 @@
 
 
 			<%# if user_signed_in? %>
+
+		<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>
+		    <%= f.error_notification %>
+
+		    <%= f.hidden_field :writing, id:"my-textarea", html_safe: true %>
+
+			<div class="form-group">
+				    <% f.label :seed_id %><br>
+				    <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
+		    	</div>
+
+
+			    <div class="form-group alignright">
+			      	<%= f.button :submit , class: "btn btn-default btn-lg"%>
+			    </div>
+		     
+		 <% end %>
+		 <br>
+		 <br>
+
 		<section>
-			<header contenteditable="false" class="header">
+			<h1 contenteditable="false">
 				<%= @seed.prompt %>
-			</header>
+			</h1>
 			
 			<article placeholder= "Type here." contenteditable="true" class="content" id="my-content" ></article>
 
-			<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>
-			    <%= f.error_notification %>
 
-			    <%= f.hidden_field :writing, id:"my-textarea", html_safe: true %>
-
-				<div class="form-group">
-					    <% f.label :seed_id %><br>
-					    <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
-			    	</div>
-
-
-				    <div class="form-group">
-				      	<%= f.button :submit %>
-				    </div>
-			     
-			 <% end %>
-
-
-			  <br>
 			<article>
 			<div id="posts" class="transitions-enabled">
+				<h2>What others wrote</h2>
+				<p>
 		        <% @posts.each do |post| %>
 		            <%# link_to image_tag(post.image.url(:medium)), post %>
-		              <p><h3 class="courier"><%= simple_format(post.writing) %></h3></p>
+		              <p><div class="content"><%= simple_format(post.writing) %></div></p>
 		              <strong><%= post.user.name if post.user %></strong>
 		                            
 		              <% if post.user == current_user %>

@@ -9,7 +9,14 @@ $jumbotron-bg: #ecf0f1;
 
 $font-family-sans-serif: 'Cabin';
 $font-family-serif:'Sanchez';
+
+$btn-default-border: #333333;
+$btn-default-color: #333333;
+$btn-default-bg: #ffffff;
 @import 'bootstrap';
+
+.btn {border-radius:50px;
+      border-width: 1px; }
 
 .navbar {
   	background: rgb(255,255,255);
@@ -38,6 +45,6 @@ h2 {
 }
 
 .container {
-  margin-top: 100px;
+  margin-top: 50px;
   max-width: 700px;
 }
