@@ -4,7 +4,7 @@
   <h2>Inspire and be inspired. </h2>
   <hr>
       <% @seeds.each do |seed| %>
-          <h3> <%= link_to seed.prompt, seeded_url(:seed => seed.prompt) %></h3> 
+          <h3> <%= link_to seed.prompt, seeded_url(:seed => seed.prompt)%></h3> 
 
 
             <% if seed.user == current_user %>
@@ -19,8 +19,9 @@
               <% end %>
         
               <span class = "alignright" >
-                        <%= link_to "#{seed.posts.count} ideas shared", seed %>
+                        <%= link_to "+ New Post", seed %>
               </span>
+              <p>
 
       <% end %>
 

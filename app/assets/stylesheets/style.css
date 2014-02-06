@@ -61,17 +61,13 @@ section {
 	margin: auto;
 }
 
-header {
-	font-weight: bold;
-	font-size: 38px;
-}
 
 article {
 	padding-bottom: 50px;
 	line-height: 30px;
 	margin-top: 22px;
 	min-height: 90%;
-	font-size: 22px;
+	font-size: 24px;
 	display: block;
 }
 
@@ -105,13 +101,13 @@ blockquote {
 .yin {
 	background: #fdfdfd;
 	color: #111;
-	margin-top: 50px
+	padding-top: 50px
 }
 
 .yang {
 	background-color: #111;
 	color: #fafafa;
-	margin-top: 50px
+	padding-top: 50px
 }
 
 .ui {

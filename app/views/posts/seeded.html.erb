@@ -4,7 +4,7 @@
   <h1><%= @seed %></h1>
         <% @posts.each do |post| %>
       
-              <p><h3 class = "courier"><%= simple_format(post.writing) %></h3></p>
+              <article class = "courier"><%= simple_format(post.writing) %></article>
               <strong><%= post.user.name if post.user %></strong>
                             
               <% if post.user == current_user %>
