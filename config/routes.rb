@@ -7,7 +7,9 @@ Pinteresting::Application.routes.draw do
     end
   end
 
-  resources :seeds
+  resources :seeds do
+
+  end
   devise_for :users
   #get "pages/home" < originall put here
   root "seeds#index"

@@ -8,6 +8,8 @@ class PostsController < ApplicationController
 
 
   def show
+    @seed = @post.seed
+    @seed_prompt = @seed.prompt
   end
 
 
@@ -21,6 +23,8 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @seed = @post.seed
+    @seed_prompt = @seed.prompt
   end
 
 

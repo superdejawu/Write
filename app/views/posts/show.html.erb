@@ -1,48 +1,40 @@
 <%# link_to 'Back', posts_path %>
 
+<section>
 
-<div class="row">
-	<div class="col-md-offset-2 col-md-8">
-		<div class = "panel panel-default ">
-			<div class="panel-heading text-center">
-				<%# image_tag @post.image.url(:medium) %>
-			</div>
-			<div class='panel-body'>
+			<article>
+			<div id="posts" class="transitions-enabled">
+				<h1><%= @seed_prompt %></h1>
 				<p>
-				  <%= @post.description %>
-				</p>
+		    
+		            <%# link_to image_tag(post.image.url(:medium)), post %>
+		              <p><div class="content"><%= simple_format(@post.writing) %></div></p>
+		              <strong><%= @post.user.name if @post.user %></strong>
+		                            
+		              <% if @post.user == current_user %>
+		                  <%= link_to edit_post_path(@post) do %>
+		                    Edit
+		                  <% end %>
+		                  <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+		                    <span class="glyphicon glyphicon-trash"></span>
+		                    
+		                  <% end %>
+		           
+		              <% end %>
 
-				<p>
-				  <%= simple_format(@post.writing) %>
-				</p>
-
-					 <%# @post.seed.each do |seed| %>
-					<%= @post.seed do |seed| %>
-					 	<%= link_to seed.prompt %>
+		            <% if user_signed_in? && current_user.voted_up_on?(@post)==false %>
+		             	<%= link_to "Like", like_post_path(@post, method: :put) %>
+						<%= @post.likes.size %>
+		            <% elsif user_signed_in?%>
+		             	<%= link_to "Dislike", dislike_post_path(@post, method: :put) %>
+						<%= @post.likes.size %>
+					<% else %>
+						<%= link_to "Like", new_user_registration_path %>
+					<%= @post.likes.size %>
 					<% end %>
-				</p>
-				 <p><strong><%= @post.user.name if @post.user %> </strong></p>
 
-				<% if @post.user == current_user %>
-					 <%= link_to edit_post_path(@post) do %>
-		                  <span class = "glyphicon glyphicon-edit"> </span>
-		             <% end %>
-		             <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do%>
-		                  <span class = "glyphicon glyphicon-trash"> </span>
-		             <% end %>
-				<% end %>
+		     
+		      </div>
 
-				<% if user_signed_in? && current_user.voted_up_on?(@post)==false %>
-	             	<%= link_to "Like", like_post_path(@post, method: :put) %>
-					<%= @post.likes.size %>
-	            <% elsif user_signed_in?%>
-	             	<%= link_to "Dislike", dislike_post_path(@post, method: :put) %>
-					<%= @post.likes.size %>
-				<% else %>
-					<%= link_to "Like", new_user_registration_path %>
-					<%= @post.likes.size %>
-				<% end %>
-			</div>
-		</div>
-	</div>
-</div>
+		     </article>
+		</section>
