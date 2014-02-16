@@ -1,9 +1,89 @@
+<div class="text-options">
+				<div class="options">
+					<span class="no-overflow">
+						<span class="lengthen ui-inputs">
+							<button class="url useicons">&#xe005;</button>
+							<input class="url-input" type="text" placeholder="Type or Paste URL here"/>
+							<button class="bold">b</button>
+							<button class="italic">i</button>
+							<button class="quote">&rdquo;</button>
+						</span>
+					</span>
+				</div>
+</div>
+
+<div class="ui">
+
+	<div class="wrapper">
+
+		<div class="top editing">
+			<button class="fullscreen useicons" title="Toggle fullscreen">
+				&#xe000;
+			</button>
+
+			<button class="color-flip useicons" title="Invert colors">
+				&#xe002;
+			</button>
+		</div>
+
+		<div class="bottom">
+			<button class="about">
+				?
+			</button>
+		</div>
+	</div>
+</div>
+
+
+<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>
+		    <%= f.error_notification %>
+
+		    <%= f.hidden_field :writing, id:"my-textarea", html_safe: true %>
+
+			<div class="form-group">
+				    <% f.label :seed_id %><br>
+				    <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
+		    	</div>
+
+
+			    <div class="form-group alignright">
+			      	<%= f.button :submit , class: "btn btn-default btn-lg"%>
+			    </div>
+		     
+<% end %>
+
 
 <section>
 	<article>
 		<h1><%= @seed_prompt %></h1>
-		<%= render 'form' %>
+		<%# render 'form' %>
+		<article placeholder= "Type here." contenteditable="true" class="content courier" id="my-content" ><%= @post.writing %></article>
+
 		<%= link_to 'Show', @post %> |
 		<%= link_to 'Back', posts_path %>
-	</article>
+	</article>	   
 </section>
+
+<!-- JS -->
+		<script type="text/javascript">
+		
+   		 document.getElementById("my-content").focus();
+
+			// Load required scripts.	
+			head.js( 
+				"js/utils.js",
+				"js/ui.js",
+				"js/editor.js",
+	        	function(){
+	            	
+	            	// Initiate ZenPen
+	            	editor.init();
+	    			ui.init();
+	            }
+	        );
+
+			//pass contenteditable to hidden :writing field
+	       function getContent(){
+    		document.getElementById("my-textarea").value = document.getElementById("my-content").innerHTML;
+				 }
+        </script>
