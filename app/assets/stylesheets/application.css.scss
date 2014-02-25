@@ -79,3 +79,17 @@ border-color: #dcdcdc;	display: block;
 
 .alignright {float: right;}
 
+.bottombar {
+			height: 40px;
+			width: 100%;
+			padding-left:20px;
+			color: #B0B0B0;
+			font-weight: 100;
+			font-size: 18px;
+			font-family: 'Sanchez';
+		}
+
+.bottombar:hover {
+	color: #333333;
+}
+

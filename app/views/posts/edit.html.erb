@@ -57,7 +57,7 @@
 	<article>
 		<h1><%= @seed_prompt %></h1>
 		<%# render 'form' %>
-		<article placeholder= "Type here." contenteditable="true" class="content courier" id="my-content" ><%= @post.writing %></article>
+		<article placeholder= "Type here." contenteditable="true" class="content courier" id="my-content" ><%= simple_format(@post.writing) %></article>
 
 		<%= link_to 'Show', @post %> |
 		<%= link_to 'Back', posts_path %>

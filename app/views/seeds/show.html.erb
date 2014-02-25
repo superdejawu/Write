@@ -29,14 +29,12 @@
 						</button>
 					</div>
 
-					<div class="bottom">
-						<button class="about">
-							?
-						</button>
-					</div>
+					
 				</div>	
+				
 
 			</div>
+			
 			<!-- <p id="notice"><%= notice %></p> -->
 
 
@@ -69,42 +67,46 @@
 			<article placeholder= "Type here." contenteditable="true" class="content courier" id="my-content" ></article>
 
 
-			<article>
+			<a name="whatotherswrote"></a>
 			<div id="posts" class="transitions-enabled">
 				<h2>What others wrote</h2>
 				<p>
 		        <% @posts.each do |post| %>
-		            <%# link_to image_tag(post.image.url(:medium)), post %>
-		              <p><div class="content"><%= simple_format(post.writing) %></div></p>
-		              <strong><%= post.user.name if post.user %></strong>
-		                            
-		              <% if post.user == current_user %>
-		                  <%= link_to edit_post_path(post) do %>
-		                    Edit
-		                  <% end %>
-		                  <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
-		                    <span class="glyphicon glyphicon-trash"></span>
-		                    
-		                  <% end %>
-		           
-		              <% end %>
+		        	<article>
+			            <%# link_to image_tag(post.image.url(:medium)), post %>
+			              <article class="content courier"><%= simple_format(post.writing) %></article>
+			   
+			              <strong><%= post.user.name if post.user %></strong>
+			                            
+			              <% if post.user == current_user %>
+			                  <%= link_to edit_post_path(post) do %>
+			                    Edit
+			                  <% end %>
+			                  <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+			                    <span class="glyphicon glyphicon-trash"></span>
+			                   
+			                  <% end %>
+			           
+			              <% end %>
 
-		            <% if user_signed_in? && current_user.voted_up_on?(post)==false %>
-		             	<%= link_to "Like", like_post_path(post, method: :put) %>
+			            <% if user_signed_in? && current_user.voted_up_on?(post)==false %>
+			             	<%= link_to "Like", like_post_path(post, method: :put) %>
+							<%= post.likes.size %>
+			            <% elsif user_signed_in?%>
+			             	<%= link_to "Dislike", dislike_post_path(post, method: :put) %>
+							<%= post.likes.size %>
+						<% else %>
+							<%= link_to "Like", new_user_registration_path %>
 						<%= post.likes.size %>
-		            <% elsif user_signed_in?%>
-		             	<%= link_to "Dislike", dislike_post_path(post, method: :put) %>
-						<%= post.likes.size %>
-					<% else %>
-						<%= link_to "Like", new_user_registration_path %>
-					<%= post.likes.size %>
-					<% end %>
-
+						<% end %>
+					</article>
 		        <% end %>
 		      </div>
 
-		     </article>
 		</section>
+		<div class="bottom bottombar">
+						<span class= "glyphicon glyphicon-arrow-down "></span> <a href="#whatotherswrote"> What others wrote. </a>
+					</div>
 
 	<!-- JS -->
 			<script type="text/javascript">
