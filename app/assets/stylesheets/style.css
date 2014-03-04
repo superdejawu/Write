@@ -57,6 +57,10 @@ body {
 	transition: all 600ms;
 }
 
+.fuck{
+	overflow: auto;
+	
+}
 /*section {
  	margin-top: 50px;
 	max-width: 700px;
