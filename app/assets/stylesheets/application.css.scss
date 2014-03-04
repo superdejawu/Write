@@ -87,9 +87,25 @@ border-color: #dcdcdc;	display: block;
 			font-weight: 100;
 			font-size: 18px;
 			font-family: 'Sanchez';
+			display:none;
 		}
 
 .bottombar:hover {
 	color: #333333;
 }
+
+.hidden{
+	display: none;
+
+}
+
+.visible{
+	display: inline;
+
+}
+
+#hidden_content{
+	display: none;
+}
+
 

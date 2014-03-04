@@ -2,11 +2,17 @@
 
 <div class = "container"> 
   <h1><%= @seed %></h1>
+
+
         <% @posts.each do |post| %>
       
               <article class = "courier"><%= simple_format(post.writing) %></article>
+            <div class="actionbar">
+
               <strong><%= post.user.name if post.user %></strong>
-                            
+              
+
+
               <% if post.user == current_user %>
                
                   <%= link_to edit_post_path(post) do %>
@@ -18,6 +24,7 @@
                   <% end %>
                   
               <% end %>
+        
                   <% if user_signed_in? && current_user.voted_up_on?(post)==false %>
                     <%= link_to "Like", like_post_path(post, method: :put) %>
                     <%= post.likes.size %>
@@ -28,7 +35,7 @@
                     <%= link_to "Like", new_user_registration_path %>
                     <%= post.likes.size %>
                   <% end %>
-       
+              </div>
         <% end %>
 
 

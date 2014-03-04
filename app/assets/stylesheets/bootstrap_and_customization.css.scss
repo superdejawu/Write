@@ -45,7 +45,20 @@ h2 {
 	font-weight: 100;
 }
 
+h3 {display: inline;}
+
 .container {
-  margin-top: 50px;
   max-width: 700px;
+}
+
+.margintop {
+  margin-top:40px;
+}
+
+.margintop_neg {
+  margin-top:-120px;
+}
+
+.postbutton {
+  margin-top:-18px;
 }

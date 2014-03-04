@@ -1,14 +1,25 @@
-	<div class="form-group">
-      <%= e.label :image %><br>
-      <%= e.file_field :image, class: "form-control" %>
-    </div>
+<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-group">
-      <%= e.label :description %><br>
-      <%= e.text_field :description, class: "form-control" %>
-    </div>
+        <%= f.hidden_field :writing, id:"my-textarea", html_safe: true %>
 
       <div class="form-group">
-      <%= e.label :writing %><br>
-      <%= e.text_area :writing, class: "form-control" %>
-    </div>
+            <% f.label :seed_id %><br>
+            <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
+          </div>
+
+
+          <div class="form-group alignright">
+              <%= f.button :submit , class: "btn btn-default btn-lg"%>
+          </div>
+         
+     <% end %>
+     <br>
+     <br>
+
+    <section>
+      <h1 contenteditable="false">
+        <%= @seed.prompt %>
+      </h1>
+      
+      <article placeholder= "Type here." contenteditable="true" class="content courier" id="my-content" ></article>

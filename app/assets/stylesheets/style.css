@@ -57,8 +57,14 @@ body {
 	transition: all 600ms;
 }
 
-section {
+/*section {
  	margin-top: 50px;
+	max-width: 700px;
+	height: 100%;
+	margin: auto;
+}*/
+
+.fillheight{
 	max-width: 700px;
 	height: 100%;
 	margin: auto;
@@ -66,13 +72,15 @@ section {
 
 
 article {
-	padding-bottom: 20px;
 	line-height: 30px;
-	margin-top: 22px;
 	min-height: 90%;
 	font-size: 24px;
 	display: block;
 	height: 100%;
+}
+
+.actionbar {
+	margin-bottom: 160px;
 }
 
 blockquote {

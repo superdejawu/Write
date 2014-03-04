@@ -1,133 +1,147 @@
 <!doctype html>
 <html>
-	<body class="yin">
-			<div class="text-options">
-				<div class="options">
-					<span class="no-overflow">
-						<span class="lengthen ui-inputs">
-							<button class="url useicons">&#xe005;</button>
-							<input class="url-input" type="text" placeholder="Type or Paste URL here"/>
-							<button class="bold">b</button>
-							<button class="italic">i</button>
-							<button class="quote">&rdquo;</button>
-						</span>
-					</span>
-				</div>
+<body class="yin">
+	<div class="text-options">
+		<div class="options">
+			<span class="no-overflow">
+				<span class="lengthen ui-inputs">
+					<button class="url useicons">&#xe005;</button>
+					<input class="url-input" type="text" placeholder="Type or Paste URL here"/>
+					<button class="bold">b</button>
+					<button class="italic">i</button>
+					<button class="quote">&rdquo;</button>
+				</span>
+			</span>
+		</div>
+	</div>
+
+	<div class="ui">
+
+		<div class="wrapper">
+
+			<div class="top editing">
+				<button class="fullscreen useicons" title="Toggle fullscreen">
+					&#xe000;
+				</button>
+
+				<button class="color-flip useicons" title="Invert colors">
+					&#xe002;
+				</button>
 			</div>
 
-			<div class="ui">
 
-				<div class="wrapper">
-
-					<div class="top editing">
-						<button class="fullscreen useicons" title="Toggle fullscreen">
-							&#xe000;
-						</button>
-
-						<button class="color-flip useicons" title="Invert colors">
-							&#xe002;
-						</button>
-					</div>
-
-					
-				</div>	
-				
-
-			</div>
-			
-			<!-- <p id="notice"><%= notice %></p> -->
+		</div>	
 
 
-			<%# if user_signed_in? %>
+	</div>
 
-		<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>
-		    <%= f.error_notification %>
-
-		    <%= f.hidden_field :writing, id:"my-textarea", html_safe: true %>
-
-			<div class="form-group">
-				    <% f.label :seed_id %><br>
-				    <%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
-		    	</div>
+	<!-- <p id="notice"><%= notice %></p> -->
 
 
-			    <div class="form-group alignright">
-			      	<%= f.button :submit , class: "btn btn-default btn-lg"%>
-			    </div>
-		     
-		 <% end %>
-		 <br>
-		 <br>
+	<%# if user_signed_in? %>
 
-		<section>
-			<h1 contenteditable="false">
+
+	
+
+	<div class="container margintop ">
+		<button class="btn btn-default btn-lg alignright postbutton">Write About It</button>
+		<h1 contenteditable="false">
 				<%= @seed.prompt %>
-			</h1>
+		</h1>
+	</div>
+	<div id = "hidden_content" class="cat container fillheight">
+
+			<%= simple_form_for @post, html: {multipart: true, onsubmit: "getContent();"} do |f| %>
+				<%= f.error_notification %>
+
+				<%= f.hidden_field :writing, id:"my-textarea", html_safe: true %>
+
+				<% f.label :seed_id %><br>
+				<%= f.hidden_field :seed_id, value: @seed.id, class: "form-control" %>
+				<%= f.button :submit , class: "btn btn-default btn-lg alignright margintop_neg"%>
+
+
+				<article placeholder= "Type here." contenteditable="true" class="content courier" id="my-content" ></article>
+						
+
+
+			<% end %>
 			
-			<article placeholder= "Type here." contenteditable="true" class="content courier" id="my-content" ></article>
+	
 
 
-			<a name="whatotherswrote"></a>
-			<div id="posts" class="transitions-enabled">
-				<h2>What others wrote</h2>
-				<p>
-		        <% @posts.each do |post| %>
-		        	<article>
-			            <%# link_to image_tag(post.image.url(:medium)), post %>
-			              <article class="content courier"><%= simple_format(post.writing) %></article>
-			   
-			              <strong><%= post.user.name if post.user %></strong>
-			                            
-			              <% if post.user == current_user %>
-			                  <%= link_to edit_post_path(post) do %>
-			                    Edit
-			                  <% end %>
-			                  <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
-			                    <span class="glyphicon glyphicon-trash"></span>
-			                   
-			                  <% end %>
-			           
-			              <% end %>
+ 	</div>
 
-			            <% if user_signed_in? && current_user.voted_up_on?(post)==false %>
-			             	<%= link_to "Like", like_post_path(post, method: :put) %>
-							<%= post.likes.size %>
-			            <% elsif user_signed_in?%>
-			             	<%= link_to "Dislike", dislike_post_path(post, method: :put) %>
-							<%= post.likes.size %>
+	<div class="container">
+		<a name="whatotherswrote"></a>
+		<div  class="transitions-enabled">
+
+
+
+			<% @posts.each do |post| %>
+				<section>
+					<article class = "courier"><%= simple_format(post.writing) %></article>
+					<div class="actionbar">
+
+						<strong><%= post.user.name if post.user %></strong>
+
+
+
+						<% if post.user == current_user %>
+
+						<%= link_to edit_post_path(post) do %>
+						Edit
+						<% end %>
+						<%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+						<span class="glyphicon glyphicon-trash"></span>
+
+						<% end %>
+
+						<% end %>
+
+						<% if user_signed_in? && current_user.voted_up_on?(post)==false %>
+						<%= link_to "Like", like_post_path(post, method: :put) %>
+						<%= post.likes.size %>
+						<% elsif user_signed_in?%>
+						<%= link_to "Dislike", dislike_post_path(post, method: :put) %>
+						<%= post.likes.size %>
 						<% else %>
-							<%= link_to "Like", new_user_registration_path %>
+						<%= link_to "Like", new_user_registration_path %>
 						<%= post.likes.size %>
 						<% end %>
-					</article>
-		        <% end %>
-		      </div>
-
-		</section>
-		<div class="bottom bottombar">
-						<span class= "glyphicon glyphicon-arrow-down "></span> <a href="#whatotherswrote"> What others wrote. </a>
 					</div>
+				</section>
+			<% end %>
+
+		</div>
+	</div>
+
+
+	<div class="bottom bottombar">
+		<span class= "glyphicon glyphicon-arrow-down "></span> <a href="#whatotherswrote"> What others wrote. </a>
+	</div>
 
 	<!-- JS -->
-			<script type="text/javascript">
+	<script type="text/javascript">
 				// Load required scripts.	
 				head.js( 
 					"js/utils.js",
 					"js/ui.js",
 					"js/editor.js",
-		        	function(){
-		            	
+					"js/form.js",
+					function(){
+
 		            	// Initiate ZenPen
 		            	editor.init();
-		    			ui.init();
+		            	ui.init();
 		            }
-		        );
+		            );
 
 				//pass contenteditable to hidden :writing field
-		       function getContent(){
-        		document.getElementById("my-textarea").value = document.getElementById("my-content").innerHTML;
-    }
-	        </script>
+				function getContent(){
+					document.getElementById("my-textarea").value = document.getElementById("my-content").innerHTML;
+				}
+				</script>
 
-	</body>
-</html>
+			</body>
+			</html>

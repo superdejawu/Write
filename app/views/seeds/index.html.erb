@@ -1,14 +1,15 @@
 <%# render 'pages/home' unless user_signed_in? %>
-<div class="container">
+<section class="container margintop">
   <h1>Write About_</h1>
   <h2>Inspire and be inspired. </h2>
   <hr>
       <% @seeds.each do |seed| %>
-          <h3> <%= link_to seed.prompt, seeded_url(:seed => seed.prompt)%></h3> 
+          <h3><%# link_to seed.prompt, seeded_url(:seed => seed.prompt)%> <%= link_to seed.prompt, seed %></h3>
 
+          <span class="alignright">
+            <%# link_to '+ Post', seed %>
 
             <% if seed.user == current_user %>
-                <%= link_to '+', seed %>
                 <%= link_to edit_seed_path(seed) do%>
                   <span class="glyphicon glyphicon-edit"></span>
                 <% end %>
@@ -17,10 +18,8 @@
 
                 <% end %>
               <% end %>
+          </span>
         
-              <span class = "alignright" >
-                        <%= link_to "+ New Post", seed %>
-              </span>
               <p>
 
       <% end %>
@@ -30,4 +29,4 @@
 
   <h3><%= link_to ' + New Seed', new_seed_path %></h3>
 
-</div>
+</section>
