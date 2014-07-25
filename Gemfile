@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
@@ -34,7 +34,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 
 gem "devise", "~> 3.2.2"
 
-gem "paperclip", '~> 3.0'
+gem "paperclip", '~> 4.2'
 
 gem "aws-sdk", '1.30.0'
 
